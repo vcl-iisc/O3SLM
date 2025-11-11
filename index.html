@@ -328,9 +328,8 @@
     
     <h2 class="title">Method</h2>
     <div class="columns is-centered"> 
-    <figure>
       <img src="static/images/SketchLLM-Model_Diag.png" alt="Method Overview" style="width:80%;">
-      <p class="caption" style="text-align: left; margin-top: 0.5em;"> 
+      <p style="text-align: left; margin-top: 0.5em;"> 
 <!-- Overview of the proposed <b>FedSCAI framework with Server and Client Alignment (SCAI)</b> implementation.
 The server communicates the global model <b>w<sup>r</sup></b> to the clients. 
 The clients then train their local models (<b>w<sup>r</sup><sub>k</sub></b>) using a weak augmentation <i>A<sub>w</sub></i>, 
@@ -341,7 +340,9 @@ The clients compute the client alignment loss: <i>L<sup>i</sup><sub>l,k</sub></i
 <i>L<sup>i</sup><sub>g,k</sub></i> to perform the local training using Eq.&nbsp;12, 
 and then communicate the updated local models <b>w<sup>r</sup><sub>k</sub></b> to the server in the subsequent round for aggregation. -->
 
-<b>Summary of </b>\(\texttt{O3SLM}\). We use CLIP-L-336 as the visual backbone. The hand-drawn sketch and natural image are encoded using this backbone, then the multimodal connector projects the sketch and image features to the input space of LLM. Finally, the sketch, image, and text tokens are concatenated and passed through the LLM, which generates the output.
+
+  </div>
+  <b>Summary of </b>\(\texttt{O3SLM}\). We use CLIP-L-336 as the visual backbone. The hand-drawn sketch and natural image are encoded using this backbone, then the multimodal connector projects the sketch and image features to the input space of LLM. Finally, the sketch, image, and text tokens are concatenated and passed through the LLM, which generates the output.
 </p>
 <p>
 
@@ -353,8 +354,6 @@ and then communicate the updated local models <b>w<sup>r</sup><sub>k</sub></b> t
       </code>   -->
 
 </p>
-    </figure>
-  </div>
   </div>
 </section>
 <!-- End Method Section -->
@@ -386,6 +385,7 @@ and then communicate the updated local models <b>w<sup>r</sup><sub>k</sub></b> t
           
         </div>
       </div>
+      
 
       
       
@@ -407,41 +407,39 @@ and then communicate the updated local models <b>w<sup>r</sup><sub>k</sub></b> t
         </div>
       </div>
 
+      
+
     </div>
+
+    <code>
+        <span style="color: rgb(218, 15, 57);">  
+        ▷ <a href="https://github.com/facebookresearch/sam2" target="_blank">See sketch samples from SketchVCL dataset, generated using our proposed sketch-generation pipeline.</a></code> 
+      </span>
+      </code>  
 
   </div>
 </section>
 <!-- End Dataset Section -->
 
 <!-- Result Section -->
-<section class="section" id="result">
+<section class="section hero" id="result">
   <div class="container is-max-desktop content">
     <h2 class="title">Results</h2>
-    <figure>
       <img src="static/images/counting_table.png" alt="Experimental Results" style="width:100%;">
-      <div class="column">
-        <!-- <h3 class="title is-5"> (2) Entropy Density of Clients Predictions</h3> -->
-        <div class="columns is-centered">
-      <p> ▷ <b>Evaluation on Sketch-Based Counting.</b> We evaluate performance on images from COCO and PixMo-Count datasets
-(Deitke et al. 2024). COCO presents a more challenging setting, with a greater number of object categories per image, forcing
+      <p>
+      ▷ <b>Evaluation on Sketch-Based Counting.</b> We evaluate performance on images from<code>COCO</code>and<code>PixMo-Count</code>datasets. COCO presents a more challenging setting, with a greater number of object categories per image, forcing
 the model to rely more on the sketches as a query. We sample sketches from four datasets representing various levels of abstraction and difficulty of hand-drawn sketches, for example QuickDraw! is known to have highly abstract and often incomplete
-sketches. † indicates sketch datasets which are unseen by our model during training, they assess our model’s ability to generalize
-to sketch styles.</p>
-        </div>
-      </div>
-    </figure>
+sketches.
+<code>†</code> indicates sketch datasets which are unseen by our model during training, they assess our model’s ability to generalize to sketch styles.
+      </p>
 
-    <figure>
-      <img src="static/images/.png" alt="Experimental Results" style="width:20%;">
+
+      <img src="static/images/detection_task.png" alt="Experimental Results" style="width:100%;">
       <!-- <p class="caption">Figure 2: Qualitative results comparing our method against baseline approaches. Our approach achieves more accurate and consistent predictions.</p> -->
-    </figure>
-    
-    <div class="columns is-centered">
-      <code>
-        <span style="color: rgb(218, 15, 57);">  
-        ▷ For more results and ablation analysis, please refer to the the main paper and supplementary.</code> 
-      </span>
-      </code>  
+      <p>
+        ▷ <b>Sketch-Based Object Detection.</b> To evaluate the sketch-based object detection on images<code>COCO val2017</code>and sketches from four different datasets, specifically:<code>Sketchy</code>,<code>QuickDraw!</code>,<code>TU-Berlin</code>, and<code>SketchVCL-C</code>. We evaluate on TUBerlin and Sketchy datasets.<code>†</code>indicates sketch datasets which are unseen by our model during training, they assess our model’s
+ability to generalize to sketch styles.
+      </p>
     </div>
 
   </div>
