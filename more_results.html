@@ -284,7 +284,7 @@
       <p>
         <b>Capabilities of our model</b> - \(\texttt{O3SLM}\). Our model is the first Large Vision-Language Model (LVLM) to demonstrate advanced alignment between sketches, images, and text—where existing LVLMs consistently fail. 
         Through extensive pretraining on our proposed \(\texttt{SketchVCL}\) dataset, the model develops a robust understanding of crude hand-drawn sketches and how they relate to the visual and textual modalities in which current LVLMs already excel. 
-        This training enables cross-modal transfer, allowing the model to handle fine-grained queries using sketch-text pairs, even though it was originally trained with sketches alone. \(\texttt{O3SLM}\) is trained across multiple tasks, including Visual Question Answering (VQA), Sketch-based Image Retrieval (SBIR), sketch-based counting, and sketch-based object detection.
+        This training enables cross-modal transfer, allowing the model to handle fine-grained queries using sketch-text pairs, even though it was originally trained with sketches alone. \(\texttt{O3SLM}\) is trained across multiple tasks, including Visual Question Answering (VQA), SketchBased Image Retrieval (SBIR), sketch-based counting, and sketch-based object detection.
       </p>
     
     </div>
@@ -323,8 +323,6 @@
 
 
 <!-- Method Section -->
-
-
 <section class="section" id="method">
   <div class="container is-max-desktop content">
     
@@ -332,11 +330,28 @@
     <div class="columns is-centered"> 
       <img src="static/images/SketchLLM-Model_Diag.png" alt="Method Overview" style="width:80%;">
       <p style="text-align: left; margin-top: 0.5em;"> 
+<!-- Overview of the proposed <b>FedSCAI framework with Server and Client Alignment (SCAI)</b> implementation.
+The server communicates the global model <b>w<sup>r</sup></b> to the clients. 
+The clients then train their local models (<b>w<sup>r</sup><sub>k</sub></b>) using a weak augmentation <i>A<sub>w</sub></i>, 
+giving us the augmented image <i>A<sub>w</sub>(x<sup>i</sup><sub>k</sub>)</i>, 
+and a strong augmentation <i>A<sub>s</sub></i> from which we get the augmented image 
+<i>A<sub>s</sub>(x<sup>i</sup><sub>k</sub>)</i>. 
+The clients compute the client alignment loss: <i>L<sup>i</sup><sub>l,k</sub></i> and the server alignment loss: 
+<i>L<sup>i</sup><sub>g,k</sub></i> to perform the local training using Eq.&nbsp;12, 
+and then communicate the updated local models <b>w<sup>r</sup><sub>k</sub></b> to the server in the subsequent round for aggregation. -->
+
 
   </div>
   <b>Summary of </b>\(\texttt{O3SLM}\). We use CLIP-L-336 as the visual backbone. The hand-drawn sketch and natural image are encoded using this backbone, then the multimodal connector projects the sketch and image features to the input space of LLM. Finally, the sketch, image, and text tokens are concatenated and passed through the LLM, which generates the output.
 </p>
 <p>
+
+
+      <!-- <code>
+        <span style="color: rgb(218, 15, 57);">  
+        ▷ For more details, please refer to the method section of the main paper. </code> 
+      </span>
+      </code>   -->
 
 </p>
   </div>
@@ -434,74 +449,67 @@ ability to generalize to sketch styles.
 
 <section class="section hero">
   <div class="container is-max-desktop">
-        <div class="content has-text-justified">
+    <!-- <div class="section-title has-text-centered is-centered"></div> -->
+    <!-- <h2 class="title is-3" style="display: flex; justify-content: center; align-items: center;"></h2> -->
+     <!-- <h2 class="title is-3 mathvista" style="display: flex; justify-content: center; align-items: center;">👻 DiffuseKronA vs. LoRA-DreamBooth</h2> -->
+    <div class="content has-text-justified">
     <div class="columns is-centered">
-
       <div class="column">
-        <div class="columns is-centered">
-          <div class="column content">
-            <img src="./static/images/sbir_result_table.png" width="100%" height="100%">
+        <div class="content">
+          <!-- <h3 class="title is-5">(1) Pseudo-label prediction Accuracy Difference</h3> -->
+           <!-- <div style="display: flex; justify-content: center; align-items: center;">
+            <img src="./static/images/Pseudo-label.png" width="100%" height="100%">
+          </div> -->
+          <img src="./static/images/pseudo-label.png" width="100%" height="80%">
+          <br>
             <p>
-            ▷ <b>Skecth-based Image Retrieval (SBIR) performance on Sketchy.</b> The substantial gains indicate that although original LLaVA has very limited sketch understanding, our training data and methodology align sketches and text in O3SLM.
-
+            ▷ <code>Pseudo-label prediction accuracy difference</code> \(\Delta_{pAcc}\) (refer to Eq. 13 of the main paper) improves with the proposed SCAl mechanism
+on the <code>Office-Home</code> dataset, when the training is initialized with the server model pre-trained on different source domains (Art, ClipArt, Product & Real-World).
             </p>
-          </div>
+          <br>
+          
+          
         </div>
       </div>
 
+      
+      
       <div class="column">
+        <!-- <h3 class="title is-5"> (2) Entropy Density of Clients Predictions</h3> -->
         <div class="columns is-centered">
           <div class="column content">
-            <img src="./static/images/motivation_fig.png" width="100%" height="100%">
-            <!-- <p>
-              ▷ <code>Effect of varying threshold</code> \(\tau_{init}\) (refer to Eq. 16 of the main paper) on the average accuracy attained by all the clients when the training is initialized with the server model pre-trained on Art, Clipart, Product, and Real-World.                
-            </p> -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section class="section hero">
-  <div class="container is-max-desktop">
-        <div class="content has-text-justified">
-    <div class="columns is-centered">
-
-      <div class="column">
-        <div class="columns is-centered">
-          <div class="column content">
+            <img src="./static/images/entropy.png" width="100%" height="80%">
             <p>
-            ▷ <code>Qualitative Results for SBIR.</code>
+              <!-- ▷ <code>Entropy density of the clients predictions on Office-Home</code> dataset, calculated via (refer to Eq. 14 of the main paper), exhibiting skewness (\(\gamma\)); with negative \(\gamma\) (e.g., \(\gamma=-0.1\)) indicating higher entropy and 
+              lower prediction confidence, while positive \(\gamma\) (e.g., \(\gamma\) = 0.15) reflecting lower entropy and higher prediction confidence. -->
+            ▷ <code>Entropy density of the clients predictions on Office-Home</code> dataset, calculated via (refer to Eq. 14 of the main paper), exhibiting skewness (\(\gamma\)); with negative \(\gamma\) indicating higher entropy and 
+              lower prediction confidence, while positive \(\gamma\) reflecting lower entropy and higher prediction confidence.
 
             </p>
-            <img src="./static/images/X_sbir_1.png" width="100%" height="100%">
             
           </div>
+
         </div>
       </div>
 
       <div class="column">
+        <!-- <h3 class="title is-5"> (3) Effect of varying threshold </h3> -->
         <div class="columns is-centered">
           <div class="column content">
-            <img src="./static/images/X_sbir_2.png" width="100%" height="100%">
-            <!-- <p>
+            <img src="./static/images/threshold.png" width="100%" height="100%">
+            <p>
               ▷ <code>Effect of varying threshold</code> \(\tau_{init}\) (refer to Eq. 16 of the main paper) on the average accuracy attained by all the clients when the training is initialized with the server model pre-trained on Art, Clipart, Product, and Real-World.                
-            </p> -->
+            </p>
+            
           </div>
+
         </div>
       </div>
-    </div>
-    <p style="text-align: center;"> 
-      <code>
-        <span style="color: rgb(218, 15, 57);">  
-        ▷ <a href="./more_results.html" target="_blank">More qualitative results for Detection and VQA.</a></code> 
-      </span>
-      </code>
-    </p>"
-    
+
       
+
+    </div>
+
   </div>
 </section>
 
