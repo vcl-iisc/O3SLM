@@ -195,15 +195,15 @@
             <div class="is-size-5 publication-authors">
               <!-- TODO: Replace with your paper authors and their personal links -->
               <span class="author-block">
-                <a href="https://www.linkedin.com/in/rishi-gupta-96a314202/" target="_blank">Rishi Gupta</a><sup>1</sup>,</span>
+                <a href="https://www.linkedin.com/in/rishi-gupta-96a314202/" target="_blank">Rishi Gupta</a><sup></sup>,</span>
                 <span class="author-block">
-                  <a href="https://mukil07.github.io" target="_blank">Mukilan Karuppasamy</a><sup>1*</sup>,</span>
+                  <a href="https://mukil07.github.io" target="_blank">Mukilan Karuppasamy</a><sup>*</sup>,</span>
                   <span class="author-block">
-                    <a href="https://scholar.google.com/citations?user=tg4LJ94AAAAJ&hl=en" target="_blank">Shyam Marjit</a><sup>1*</sup>,</span>
+                    <a href="https://scholar.google.com/citations?user=tg4LJ94AAAAJ&hl=en" target="_blank">Shyam Marjit</a><sup>*</sup>,</span>
               <span class="author-block">
-                    <a href="https://scholar.google.com/citations?user=rDCT8xQAAAAJ&hl=en" target="_blank">Aditay Tripathi</a><sup>1†</sup>,</span>
+                    <a href="https://scholar.google.com/citations?user=rDCT8xQAAAAJ&hl=en" target="_blank">Aditay Tripathi</a><sup>†</sup>,</span>
               <span class="author-block">
-                    <a href="https://anirbanchakraborty.github.io/" target="_blank">Anirban Chakraborty</a><sup>1</sup></span>
+                    <a href="https://anirbanchakraborty.github.io/" target="_blank">Anirban Chakraborty</a><sup></sup></span>
                   </div>
 
                   <div class="is-size-5 publication-authors">
@@ -326,34 +326,36 @@
 <!-- End Method Section -->
 
 
-
-<!-- Start of Dataset Section -->
-<section class="section hero">
-  <div class="container is-max-desktop">
-    <!-- <div class="section-title has-text-centered is-centered"></div> -->
-    <!-- <h2 class="title is-3" style="display: flex; justify-content: center; align-items: center;"></h2> -->
-     <!-- <h2 class="title is-3 mathvista" style="display: flex; justify-content: center; align-items: center;">👻 DiffuseKronA vs. LoRA-DreamBooth</h2> -->
+<!-- <section class="section hero" id="result">
+  <div class="container is-max-desktop content">
     <h2 class="title">Method</h2>
-    <!-- <div class="content has-text-justified">
-    <div class="columns is-centered"> -->
-      <div class="column">
-        <div class="content">
-          <figure style="display: flex; justify-content: center; align-items: center;">
-          <img src="./static/images/SketchLLM-Model_Diag.png" width="80%" height="80%">
-          </figure>
-          <!-- <br> -->
-            <p style="text-align: left; margin-top: 0.5em;"> 
-          <b>Summary of </b>\(\texttt{O3SLM}\). We use CLIP-L-336 as the visual backbone. The hand-drawn sketch and natural image are encoded using this backbone, then the multimodal connector projects the sketch and image features to the input space of LLM. Finally, the sketch, image, and text tokens are concatenated and passed through the LLM, which generates the output.
+      <img src="static/images/SketchLLM-Model_Diag.png" alt="Experimental Results" style="width:80%;">
+      <p>
+        <b>Summary of </b>\(\texttt{O3SLM}\). We use CLIP-L-336 as the visual backbone. The hand-drawn sketch and natural image are encoded using this backbone, then the multimodal connector projects the sketch and image features to the input space of LLM. Finally, the sketch, image, and text tokens are concatenated and passed through the LLM, which generates the output.
       </p>
-          <br>
-          
-          
-        </div>
-      </div>
-    <!-- </div> 
-    </div> -->
+
     </div>
 
+  </div>
+</section> -->
+
+<section class="section hero" id="result">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Method</h2>
+
+    <div style="text-align: center;">
+      <img src="static/images/SketchLLM-Model_Diag.png" 
+           alt="Experimental Results" 
+           style="width:80%; display:block; margin:0 auto;">
+    </div>
+    <br>
+    <p>
+      <b>Summary of </b>\(\texttt{O3SLM}\). We use CLIP-L-336 as the visual backbone. 
+      The hand-drawn sketch and natural image are encoded using this backbone, 
+      then the multimodal connector projects the sketch and image features to 
+      the input space of LLM. Finally, the sketch, image, and text tokens are concatenated 
+      and passed through the LLM, which generates the output.
+    </p>
   </div>
 </section>
 <!-- End Method Section -->
@@ -435,7 +437,7 @@ sketches.
 <code>†</code> indicates sketch datasets which are unseen by our model during training, they assess our model’s ability to generalize to sketch styles.
       </p>
 
-
+      <br>
       <img src="static/images/detection_task.png" alt="Experimental Results" style="width:100%;">
       <!-- <p class="caption">Figure 2: Qualitative results comparing our method against baseline approaches. Our approach achieves more accurate and consistent predictions.</p> -->
       <p>
@@ -460,10 +462,9 @@ ability to generalize to sketch styles.
             <img src="./static/images/sbir_result_table.png" width="100%" height="100%">
             <p>
             ▷ <b>Skecth-based Image Retrieval (SBIR) performance on Sketchy.</b> The substantial gains indicate that although original LLaVA has very limited sketch understanding, our training data and methodology align sketches and text in O3SLM.
-
             </p>
-          </div>
-        </div>
+          <!-- </div>
+        </div> -->
       </div>
 
       <div class="column">
