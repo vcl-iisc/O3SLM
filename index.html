@@ -323,22 +323,42 @@
 
 
 <!-- Method Section -->
+<!-- End Method Section -->
 
 
-<section class="section" id="method">
-  <div class="container is-max-desktop content">
-    
+
+<!-- Start of Dataset Section -->
+<section class="section hero">
+  <div class="container is-max-desktop">
+    <!-- <div class="section-title has-text-centered is-centered"></div> -->
+    <!-- <h2 class="title is-3" style="display: flex; justify-content: center; align-items: center;"></h2> -->
+     <!-- <h2 class="title is-3 mathvista" style="display: flex; justify-content: center; align-items: center;">👻 DiffuseKronA vs. LoRA-DreamBooth</h2> -->
     <h2 class="title">Method</h2>
-    <div class="columns is-centered"> 
-      
-      <img src="static/images/SketchLLM-Model_Diag.png" alt="Method Overview" style="width:80%;">
-  </div>
-  <p style="text-align: left; margin-top: 0.5em;"> 
+    <!-- <div class="content has-text-justified">
+    <div class="columns is-centered"> -->
+      <div class="column">
+        <div class="content">
+          <figure style="display: flex; justify-content: center; align-items: center;">
+          <img src="./static/images/SketchLLM-Model_Diag.png" width="80%" height="80%">
+          </figure>
+          <!-- <br> -->
+            <p style="text-align: left; margin-top: 0.5em;"> 
           <b>Summary of </b>\(\texttt{O3SLM}\). We use CLIP-L-336 as the visual backbone. The hand-drawn sketch and natural image are encoded using this backbone, then the multimodal connector projects the sketch and image features to the input space of LLM. Finally, the sketch, image, and text tokens are concatenated and passed through the LLM, which generates the output.
       </p>
+          <br>
+          
+          
+        </div>
+      </div>
+    <!-- </div> 
+    </div> -->
+    </div>
+
   </div>
 </section>
 <!-- End Method Section -->
+
+
 
 <!-- Start of Dataset Section -->
 <section class="section hero">
